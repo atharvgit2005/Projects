@@ -1,0 +1,48 @@
+.nav{
+    display: flex;
+    justify-content: center;
+    background-color: #075e54;
+    padding: 1rem;
+    margin: 0;
+}
+.nav ul{
+    background-color: transparent;
+    flex: 1;
+    text-align: center;
+    list-style: none;
+}
+.nav ul li{
+    display: inline-block;
+    background-color: transparent;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+}
+.search-box{
+    display: flex;
+    background: linear-gradient(70deg, rgb(253, 253, 253), rgb(119, 119, 119));;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 50px;
+}
+.search-box input{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+    font-size: 1rem;
+}
+.search-box input::placeholder{
+    color: #999;
+}
+.search-box button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.logo{
+    z-index: +1;
+    background-color: transparent;
+    height: 10%;
+    width: 10%;
+    margin-left: 20px;
+}
