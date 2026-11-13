@@ -1,0 +1,68 @@
+{
+  "": {
+    "swift-dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/master.swiftdeps"
+  },
+  "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/AppDelegate.swift": {
+    "dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/AppDelegate.d",
+    "object": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/AppDelegate.swift.o",
+    "swiftmodule": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/AppDelegate~partial.swiftmodule",
+    "swift-dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/AppDelegate.swiftdeps",
+    "diagnostics": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/AppDelegate.dia"
+  },
+  "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/FrameReassembler.swift": {
+    "dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/FrameReassembler.d",
+    "object": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/FrameReassembler.swift.o",
+    "swiftmodule": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/FrameReassembler~partial.swiftmodule",
+    "swift-dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/FrameReassembler.swiftdeps",
+    "diagnostics": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/FrameReassembler.dia"
+  },
+  "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/Logger.swift": {
+    "dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Logger.d",
+    "object": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Logger.swift.o",
+    "swiftmodule": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Logger~partial.swiftmodule",
+    "swift-dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Logger.swiftdeps",
+    "diagnostics": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Logger.dia"
+  },
+  "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/MetalRenderer.swift": {
+    "dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/MetalRenderer.d",
+    "object": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/MetalRenderer.swift.o",
+    "swiftmodule": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/MetalRenderer~partial.swiftmodule",
+    "swift-dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/MetalRenderer.swiftdeps",
+    "diagnostics": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/MetalRenderer.dia"
+  },
+  "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/NetworkReceiver.swift": {
+    "dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/NetworkReceiver.d",
+    "object": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/NetworkReceiver.swift.o",
+    "swiftmodule": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/NetworkReceiver~partial.swiftmodule",
+    "swift-dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/NetworkReceiver.swiftdeps",
+    "diagnostics": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/NetworkReceiver.dia"
+  },
+  "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/Protocol.swift": {
+    "dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Protocol.d",
+    "object": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Protocol.swift.o",
+    "swiftmodule": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Protocol~partial.swiftmodule",
+    "swift-dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Protocol.swiftdeps",
+    "diagnostics": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Protocol.dia"
+  },
+  "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/VideoToolboxDecoder.swift": {
+    "dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/VideoToolboxDecoder.d",
+    "object": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/VideoToolboxDecoder.swift.o",
+    "swiftmodule": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/VideoToolboxDecoder~partial.swiftmodule",
+    "swift-dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/VideoToolboxDecoder.swiftdeps",
+    "diagnostics": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/VideoToolboxDecoder.dia"
+  },
+  "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/main.swift": {
+    "dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/main.d",
+    "object": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/main.swift.o",
+    "swiftmodule": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/main.swiftdeps",
+    "diagnostics": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/main.dia"
+  },
+  "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/DerivedSources/resource_bundle_accessor.swift": {
+    "dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/resource_bundle_accessor.d",
+    "object": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/resource_bundle_accessor.swift.o",
+    "swiftmodule": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/resource_bundle_accessor~partial.swiftmodule",
+    "swift-dependencies": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/resource_bundle_accessor.swiftdeps",
+    "diagnostics": "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/resource_bundle_accessor.dia"
+  }
+}

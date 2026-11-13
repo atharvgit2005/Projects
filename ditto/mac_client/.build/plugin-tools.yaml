@@ -1,0 +1,92 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "MirrorClient-arm64-apple-macosx26.0-debug.exe": ["<MirrorClient-arm64-apple-macosx26.0-debug.exe>"]
+  "MirrorClient-arm64-apple-macosx26.0-debug.module": ["<MirrorClient-arm64-apple-macosx26.0-debug.module>"]
+  "PackageStructure": ["<PackageStructure>"]
+  "main": ["<MirrorClient-arm64-apple-macosx26.0-debug.exe>","<MirrorClient-arm64-apple-macosx26.0-debug.module>"]
+  "test": ["<MirrorClient-arm64-apple-macosx26.0-debug.exe>","<MirrorClient-arm64-apple-macosx26.0-debug.module>"]
+default: "main"
+nodes:
+  "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient":
+    is-mutated: true
+commands:
+  "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient-entitlement.plist":
+    tool: write-auxiliary-file
+    inputs: ["<entitlement-plist>","<com.apple.security.get-task-allow>"]
+    outputs: ["/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient-entitlement.plist"]
+    description: "Write auxiliary file /Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient-entitlement.plist"
+
+  "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/AppDelegate.swift","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/FrameReassembler.swift","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/Logger.swift","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/MetalRenderer.swift","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/NetworkReceiver.swift","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/Protocol.swift","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/VideoToolboxDecoder.swift","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/main.swift","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/DerivedSources/resource_bundle_accessor.swift"]
+    outputs: ["/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/sources"]
+    description: "Write auxiliary file /Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/sources"
+
+  "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/AppDelegate.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/FrameReassembler.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Logger.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/MetalRenderer.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/NetworkReceiver.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Protocol.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/VideoToolboxDecoder.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/main.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/resource_bundle_accessor.swift.o"]
+    outputs: ["/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.product/Objects.LinkFileList"
+
+  "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient_MirrorClient.bundle/GlyphAtlas.png":
+    tool: copy-tool
+    inputs: ["/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Resources/GlyphAtlas.png"]
+    outputs: ["/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient_MirrorClient.bundle/GlyphAtlas.png"]
+    description: "Copying /Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Resources/GlyphAtlas.png"
+
+  "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Library/Developer/CommandLineTools/usr/bin/swiftc"]
+    outputs: ["/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+
+  "<MirrorClient-arm64-apple-macosx26.0-debug.exe>":
+    tool: phony
+    inputs: ["<MirrorClient-arm64-apple-macosx26.0-debug.exe-CodeSigning>"]
+    outputs: ["<MirrorClient-arm64-apple-macosx26.0-debug.exe>"]
+
+  "<MirrorClient-arm64-apple-macosx26.0-debug.module>":
+    tool: phony
+    inputs: ["/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/AppDelegate.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/FrameReassembler.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Logger.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/MetalRenderer.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/NetworkReceiver.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Protocol.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/VideoToolboxDecoder.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/main.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/resource_bundle_accessor.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/Modules/MirrorClient.swiftmodule"]
+    outputs: ["<MirrorClient-arm64-apple-macosx26.0-debug.module>"]
+
+  "C.MirrorClient-arm64-apple-macosx26.0-debug.exe":
+    tool: shell
+    inputs: ["/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/AppDelegate.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/FrameReassembler.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Logger.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/MetalRenderer.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/NetworkReceiver.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Protocol.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/VideoToolboxDecoder.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/main.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/resource_bundle_accessor.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.product/Objects.LinkFileList"]
+    outputs: ["/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient"]
+    description: "Linking ./.build/arm64-apple-macosx/debug/MirrorClient"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-L","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug","-o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient","-module-name","MirrorClient","-Xlinker","-no_warn_duplicate_libraries","-emit-executable","-Xlinker","-alias","-Xlinker","_MirrorClient_main","-Xlinker","_main","-Xlinker","-rpath","-Xlinker","@loader_path","@/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Library/Developer/CommandLineTools/usr/lib/swift-6.2/macosx","-target","arm64-apple-macosx13.0","-framework","AppKit","-framework","Metal","-framework","QuartzCore","-framework","VideoToolbox","-framework","Network","-framework","CoreVideo","-Xlinker","-add_ast_path","-Xlinker","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/Modules/MirrorClient.swiftmodule","-I","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-L","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-plugin-path","/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g"]
+
+  "C.MirrorClient-arm64-apple-macosx26.0-debug.exe-entitlements":
+    tool: shell
+    inputs: ["/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient-entitlement.plist"]
+    outputs: ["<MirrorClient-arm64-apple-macosx26.0-debug.exe-CodeSigning>"]
+    description: "Applying debug entitlements to ./.build/arm64-apple-macosx/debug/MirrorClient"
+    args: ["codesign","--force","--sign","-","--entitlements","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient-entitlement.plist","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient"]
+
+  "C.MirrorClient-arm64-apple-macosx26.0-debug.module":
+    tool: shell
+    inputs: ["/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/AppDelegate.swift","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/FrameReassembler.swift","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/Logger.swift","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/MetalRenderer.swift","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/NetworkReceiver.swift","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/Protocol.swift","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/VideoToolboxDecoder.swift","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/main.swift","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/DerivedSources/resource_bundle_accessor.swift","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt","<MirrorClient-arm64-apple-macosx26.0-debug.module-resources>","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/sources"]
+    outputs: ["/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/AppDelegate.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/FrameReassembler.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Logger.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/MetalRenderer.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/NetworkReceiver.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Protocol.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/VideoToolboxDecoder.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/main.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/resource_bundle_accessor.swift.o","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/Modules/MirrorClient.swiftmodule"]
+    description: "Compiling Swift Module 'MirrorClient' (9 sources)"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-module-name","MirrorClient","-emit-dependencies","-emit-module","-emit-module-path","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/Modules/MirrorClient.swiftmodule","-output-file-map","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/output-file-map.json","-incremental","-c","@/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/sources","-I","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx13.0","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j8","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_AVAILABLE","-module-cache-path","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-Xfrontend","-entry-point-function-name","-Xfrontend","MirrorClient_main","-color-diagnostics","-swift-version","5","-I","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-L","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-plugin-path","/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g","-Xcc","-isysroot","-Xcc","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-Xcc","-fPIC","-Xcc","-g","-package-name","mac_client"]
+
+  "MirrorClient-arm64-apple-macosx26.0-debug.module-resources":
+    tool: phony
+    inputs: ["/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient_MirrorClient.bundle/GlyphAtlas.png"]
+    outputs: ["<MirrorClient-arm64-apple-macosx26.0-debug.module-resources>"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Package.swift","/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

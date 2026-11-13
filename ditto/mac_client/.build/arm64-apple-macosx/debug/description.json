@@ -1,0 +1,410 @@
+{
+  "builtTestProducts" : [
+
+  ],
+  "copyCommands" : {
+    "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient_MirrorClient.bundle/GlyphAtlas.png" : {
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Resources/GlyphAtlas.png"
+        }
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient_MirrorClient.bundle/GlyphAtlas.png"
+        }
+      ]
+    }
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.MirrorClient-arm64-apple-macosx26.0-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/sources",
+      "importPath" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/AppDelegate.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/FrameReassembler.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/Logger.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/MetalRenderer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/NetworkReceiver.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/Protocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/VideoToolboxDecoder.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/main.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/DerivedSources/resource_bundle_accessor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "virtual",
+          "name" : "<MirrorClient-arm64-apple-macosx26.0-debug.module-resources>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "MirrorClient",
+      "moduleOutputPath" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/Modules/MirrorClient.swiftmodule",
+      "objects" : [
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/AppDelegate.swift.o",
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/FrameReassembler.swift.o",
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Logger.swift.o",
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/MetalRenderer.swift.o",
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/NetworkReceiver.swift.o",
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Protocol.swift.o",
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/VideoToolboxDecoder.swift.o",
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/main.swift.o",
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/resource_bundle_accessor.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx13.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_AVAILABLE",
+        "-module-cache-path",
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "MirrorClient_main",
+        "-color-diagnostics",
+        "-swift-version",
+        "5",
+        "-I",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-L",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-plugin-path",
+        "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "mac_client"
+      ],
+      "outputFileMapPath" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/AppDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/FrameReassembler.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Logger.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/MetalRenderer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/NetworkReceiver.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Protocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/VideoToolboxDecoder.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/main.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/resource_bundle_accessor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/Modules/MirrorClient.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/AppDelegate.swift",
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/FrameReassembler.swift",
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/Logger.swift",
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/MetalRenderer.swift",
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/NetworkReceiver.swift",
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/Protocol.swift",
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/VideoToolboxDecoder.swift",
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/main.swift",
+        "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/DerivedSources/resource_bundle_accessor.swift"
+      ],
+      "tempsPath" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "MirrorClient" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "MirrorClient",
+      "-package-name",
+      "mac_client",
+      "-c",
+      "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/AppDelegate.swift",
+      "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/FrameReassembler.swift",
+      "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/Logger.swift",
+      "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/MetalRenderer.swift",
+      "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/NetworkReceiver.swift",
+      "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/Protocol.swift",
+      "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/VideoToolboxDecoder.swift",
+      "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/main.swift",
+      "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/DerivedSources/resource_bundle_accessor.swift",
+      "-I",
+      "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx13.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_AVAILABLE",
+      "-module-cache-path",
+      "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "MirrorClient_main",
+      "-color-diagnostics",
+      "-swift-version",
+      "5",
+      "-I",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-L",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-plugin-path",
+      "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "mac_client",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "MirrorClient" : [
+
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient-entitlement.plist" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<entitlement-plist>"
+        },
+        {
+          "kind" : "virtual",
+          "name" : "<com.apple.security.get-task-allow>"
+        }
+      ],
+      "outputFilePath" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient-entitlement.plist"
+    },
+    "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/AppDelegate.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/FrameReassembler.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/Logger.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/MetalRenderer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/NetworkReceiver.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/Protocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/VideoToolboxDecoder.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/Sources/MirrorClient/main.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/DerivedSources/resource_bundle_accessor.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/sources"
+    },
+    "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/AppDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/FrameReassembler.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Logger.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/MetalRenderer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/NetworkReceiver.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/Protocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/VideoToolboxDecoder.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/main.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.build/resource_bundle_accessor.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/MirrorClient.product/Objects.LinkFileList"
+    },
+    "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/atharvpaharia100/Desktop/Projects/ditto/mac_client/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+    }
+  }
+}

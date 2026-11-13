@@ -11,3 +11,8 @@ Included projects:
 - revision
 - whats
 - Whatsapp Project
+
+### Added Jan-April 2026 standalone projects:
+- ditto
+- prep
+- black logo new .svg.svg
