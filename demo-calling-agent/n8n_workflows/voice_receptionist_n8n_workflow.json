@@ -1,0 +1,170 @@
+{
+  "name": "AI Voice Receptionist - Habib's Salon Pune Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "check-slot",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "name": "Webhook: Check Available Slots",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "book",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "name": "Webhook: Create Booking",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 500]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "cancel",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "name": "Webhook: Cancel Booking",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 700]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "reschedule",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "name": "Webhook: Reschedule Booking",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 900]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "get-services",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "name": "Webhook: Get Services",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 1100]
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $json.body;\nconst slots = ['10:30 AM', '11:30 AM', '02:00 PM', '04:30 PM', '06:00 PM'];\n\nreturn [{\n  json: {\n    success: true,\n    message: `Slots check for ${body.service || 'service'} on ${body.date}`,\n    available_slots: slots,\n    requested_date: body.date\n  }\n}];"
+      },
+      "name": "Check Slot Logic & Availability Engine",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $json.body;\nconst bookingId = 'apt_' + Date.now();\n\nreturn [{\n  json: {\n    success: true,\n    message: `Appointment confirmed for ${body.customer_name} on ${body.date} at ${body.time}`,\n    booking_id: bookingId,\n    appointment: {\n      id: bookingId,\n      customer_name: body.customer_name,\n      phone: body.phone,\n      service: body.service,\n      date: body.date,\n      time: body.time,\n      status: 'confirmed',\n      notes: body.notes || 'Booked via Priya AI'\n    },\n    whatsapp_sent: true,\n    google_calendar_synced: true\n  }\n}];"
+      },
+      "name": "Create Booking & Dispatch Notifications",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [500, 500]
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $json.body;\nreturn [{\n  json: {\n    success: true,\n    message: `Booking ${body.booking_id || ''} has been cancelled successfully.`,\n    status: 'cancelled'\n  }\n}];"
+      },
+      "name": "Cancel Booking Engine",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [500, 700]
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $json.body;\nreturn [{\n  json: {\n    success: true,\n    message: `Booking rescheduled to ${body.new_date} at ${body.new_time}.`,\n    status: 'rescheduled'\n  }\n}];"
+      },
+      "name": "Reschedule Booking Engine",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [500, 900]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{\n  json: {\n    success: true,\n    data: {\n      services: [\n        { name: 'Haircut', price: 800 },\n        { name: 'Hair Spa', price: 1500 },\n        { name: 'Keratin Treatment', price: 4500 },\n        { name: 'Hair Coloring', price: 2500 },\n        { name: 'Facial & Skin Treatment', price: 2000 }\n      ]\n    }\n  }\n}];"
+      },
+      "name": "Get Services & Pricing",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [500, 1100]
+    }
+  ],
+  "connections": {
+    "Webhook: Check Available Slots": {
+      "main": [
+        [
+          {
+            "node": "Check Slot Logic & Availability Engine",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook: Create Booking": {
+      "main": [
+        [
+          {
+            "node": "Create Booking & Dispatch Notifications",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook: Cancel Booking": {
+      "main": [
+        [
+          {
+            "node": "Cancel Booking Engine",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook: Reschedule Booking": {
+      "main": [
+        [
+          {
+            "node": "Reschedule Booking Engine",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook: Get Services": {
+      "main": [
+        [
+          {
+            "node": "Get Services & Pricing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

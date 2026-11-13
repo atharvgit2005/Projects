@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-stitch-dark text-stitch-text font-sans selection:bg-stitch-accent selection:text-stitch-dark;
+  }
+
+  /* High contrast visible focus indicators for compliance */
+  :focus-visible {
+    outline: 2px solid theme('colors.stitch.accent');
+    outline-offset: 2px;
+  }
+}
+
+/* Custom styles for LED status displays and sliders */
+.led-indicator {
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.led-idle {
+  background-color: #3f3f3f;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.led-armed {
+  background-color: #8ab4f8;
+  box-shadow: 0 0 8px #8ab4f8, inset 0 1px 2px rgba(255,255,255,0.4);
+}
+
+.led-recording {
+  background-color: #f28b82;
+  box-shadow: 0 0 10px #f28b82, inset 0 1px 2px rgba(255,255,255,0.4);
+}
+
+.led-playing {
+  background-color: #81c995;
+  box-shadow: 0 0 8px #81c995, inset 0 1px 2px rgba(255,255,255,0.4);
+}
+
+.led-overdubbing {
+  background-color: #fdd663;
+  box-shadow: 0 0 8px #fdd663, inset 0 1px 2px rgba(255,255,255,0.4);
+}
+
+.led-paused {
+  background-color: #fdd663;
+  opacity: 0.5;
+  box-shadow: 0 0 4px #fdd663;
+}

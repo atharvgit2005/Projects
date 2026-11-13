@@ -1,0 +1,34 @@
+{
+  "mode": "autonomous",
+  "granularity": "standard",
+  "workflow": {
+    "research": true,
+    "plan_check": true,
+    "verifier": true,
+    "auto_advance": true,
+    "nyquist_validation": true,
+    "security_enforcement": true,
+    "security_asvs_level": 1,
+    "security_block_on": "high",
+    "discuss_mode": "direct",
+    "research_before_questions": false,
+    "code_review_command": null,
+    "cross_ai_execution": false
+  },
+  "planning": {
+    "commit_docs": true,
+    "search_gitignored": false
+  },
+  "git": {
+    "create_tag": true
+  },
+  "parallelization": {
+    "enabled": false,
+    "plan_level": false,
+    "task_level": false
+  },
+  "safety": {
+    "always_confirm_destructive": false,
+    "always_confirm_external_services": false
+  }
+}

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Antigravity Orchestrator | Autonomous Control Center</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236366F1'/><circle cx='50' cy='50' r='25' fill='%2306B6D4'/></svg>">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="app-header">
+    <div class="brand-container">
+      <div class="logo-orb">⚡</div>
+      <div>
+        <div class="brand-title">
+          Antigravity Orchestrator
+          <span class="badge-version">v0.1.0</span>
+        </div>
+        <div class="project-pill" id="project-path-text">Workspace Loading...</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <div class="system-status-indicator">
+        <div class="status-dot idle" id="status-dot"></div>
+        <span id="status-text">INITIALIZING</span>
+      </div>
+
+      <button id="btn-stop-loop" class="btn btn-danger" style="display: none;">
+        <span>⏹</span> Stop Loop
+      </button>
+
+      <button id="btn-verify-now" class="btn btn-secondary">
+        <span>✓</span> Verify Workspace
+      </button>
+
+      <button id="btn-run-loop" class="btn btn-primary">
+        <span>▶</span> Run Autonomous Loop
+      </button>
+
+      <button id="btn-new-task" class="btn btn-secondary">
+        <span>+</span> New Task
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="container">
+
+    <!-- Closed-Loop Pipeline Visualizer -->
+    <section class="pipeline-card">
+      <div class="pipeline-header">
+        <span class="pipeline-title">Closed-Loop Autonomous Architecture</span>
+        <span style="font-size: 0.75rem; color: var(--text-dim); font-family: 'JetBrains Mono';">Antigravity Agent + Senior Reviewer Loop</span>
+      </div>
+      <div class="pipeline-steps">
+        <div class="step-box" id="step-spec">
+          <span class="step-number">Step 01</span>
+          <span class="step-title">Task &amp; Spec</span>
+          <span class="step-desc">Requirements &amp; Criteria</span>
+        </div>
+        <div class="pipeline-arrow">➔</div>
+        <div class="step-box" id="step-agent">
+          <span class="step-number">Step 02</span>
+          <span class="step-title">Antigravity Agent</span>
+          <span class="step-desc">SDK / IPC / Mock Coder</span>
+        </div>
+        <div class="pipeline-arrow">➔</div>
+        <div class="step-box" id="step-verif">
+          <span class="step-number">Step 03</span>
+          <span class="step-title">Verification Engine</span>
+          <span class="step-desc">Pytest, Linters, Diff</span>
+        </div>
+        <div class="pipeline-arrow">➔</div>
+        <div class="step-box" id="step-review">
+          <span class="step-number">Step 04</span>
+          <span class="step-title">Senior Reviewer</span>
+          <span class="step-desc">Claude / GPT / Rules</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Split Grid: Task Backlog vs. Evidence Inspector -->
+    <div class="dashboard-grid">
+      
+      <!-- Left Column: Backlog & Queue -->
+      <section class="panel-card">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>📋 Task Backlog</span>
+            <span class="badge-count" id="task-total-badge">0/0</span>
+          </div>
+        </div>
+
+        <div class="task-filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="pending">Pending</button>
+          <button class="filter-btn" data-filter="in_progress">In Progress</button>
+          <button class="filter-btn" data-filter="blocked">Blocked</button>
+          <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+
+        <div class="task-list" id="task-list">
+          <div style="text-align: center; color: var(--text-dim); padding: 2rem;">Loading tasks...</div>
+        </div>
+      </section>
+
+      <!-- Right Column: Evidence & Run Inspector -->
+      <section class="panel-card">
+        <div class="panel-header">
+          <div class="panel-title" id="inspector-title">
+            <span>🔍 Run &amp; Task Inspector</span>
+          </div>
+        </div>
+
+        <div class="inspector-tabs">
+          <button class="tab-btn active" data-tab="overview">⚡ Overview</button>
+          <button class="tab-btn" data-tab="diff">📄 Code Diff</button>
+          <button class="tab-btn" data-tab="verification">🧪 Verification Evidence</button>
+          <button class="tab-btn" data-tab="reviewer">🧐 Senior Reviewer</button>
+          <button class="tab-btn" data-tab="logs">💻 Terminal Logs</button>
+        </div>
+
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab-overview">
+            <div style="color: var(--text-dim); text-align: center; padding: 3rem;">
+              Select a task or past execution run to inspect evidence.
+            </div>
+          </div>
+
+          <div class="tab-pane" id="tab-diff">
+            <div style="color: var(--text-dim); text-align: center; padding: 3rem;">
+              No unified diff available.
+            </div>
+          </div>
+
+          <div class="tab-pane" id="tab-verification">
+            <div style="color: var(--text-dim); text-align: center; padding: 3rem;">
+              No verification checks recorded.
+            </div>
+          </div>
+
+          <div class="tab-pane" id="tab-reviewer">
+            <div style="color: var(--text-dim); text-align: center; padding: 3rem;">
+              No senior reviewer evaluation recorded.
+            </div>
+          </div>
+
+          <div class="tab-pane" id="tab-logs">
+            <div class="terminal-window" id="terminal-logs">
+              <div class="terminal-line info">Connecting to orchestrator logs...</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Bottom Section: Execution Run History -->
+    <section class="panel-card">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span>📜 Execution Run History</span>
+        </div>
+      </div>
+      <div class="history-grid" id="history-list">
+        <div style="color: var(--text-dim); padding: 1rem;">Loading run history...</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Create Task Modal Dialog -->
+  <div class="modal-backdrop" id="task-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 style="font-size: 1.1rem; font-weight: 700;">+ Create Backlog Task</h3>
+        <button id="btn-modal-close" style="background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.2rem;">✕</button>
+      </div>
+      <form id="form-create-task">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="input-task-id">Task ID *</label>
+            <input class="form-input" id="input-task-id" required placeholder="e.g. task-auth-jwt" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="input-task-title">Title *</label>
+            <input class="form-input" id="input-task-title" required placeholder="e.g. Implement JWT authentication" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="input-task-objective">Objective *</label>
+            <textarea class="form-textarea" id="input-task-objective" required placeholder="Provide clear specification for Antigravity..."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="input-task-reqs">Requirements (one per line)</label>
+            <textarea class="form-textarea" id="input-task-reqs" placeholder="Require bearer token header&#10;Verify signature with HS256"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="input-task-criteria">Acceptance Criteria (one per line)</label>
+            <textarea class="form-textarea" id="input-task-criteria" placeholder="All unit tests pass with zero failures&#10;Git diff contains new middleware"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="input-task-attempts">Max Retry Attempts</label>
+            <input class="form-input" id="input-task-attempts" type="number" value="3" min="1" max="10" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="btn-modal-cancel">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

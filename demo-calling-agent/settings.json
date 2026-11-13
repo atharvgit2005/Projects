@@ -1,0 +1,12 @@
+{
+    "env": {
+      "ANTHROPIC_BASE_URL": "https://agentrouter.org",
+      "ANTHROPIC_API_KEY": "sk-dyjv5CuvfP9S2VZ6xNdYcxqDCXr2jUSUJmZDezRgWOWuBB6e",
+      "ANTHROPIC_AUTH_TOKEN": ""
+    },
+    "model": "claude-opus-4-8",
+    "effortLevel": "xhigh",
+    "tui": "fullscreen",
+    "theme": "dark",
+    "defaultMode": "bypassPermissions"
+  }

@@ -16,3 +16,11 @@ Included projects:
 - ditto
 - prep
 - black logo new .svg.svg
+
+### Added July-September 2026 standalone projects:
+- demo-calling-agent
+- Mobius
+- whatsapp-chaatter
+- barrier-custom
+- dhiman
+- orchestrator

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Möbius Audio Debug Test</title>
+  <style>
+    body { font-family: monospace; background: #111; color: #0f0; padding: 20px; }
+    button { background: #222; color: #0f0; border: 1px solid #0f0; padding: 8px 16px; margin: 5px; cursor: pointer; font-family: monospace; font-size: 14px; }
+    button:hover { background: #0f0; color: #111; }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+    #log { background: #000; padding: 15px; margin-top: 20px; height: 500px; overflow-y: auto; border: 1px solid #333; white-space: pre-wrap; font-size: 12px; }
+    .ok { color: #0f0; }
+    .err { color: #f44; }
+    .warn { color: #fa0; }
+    .info { color: #08f; }
+    h2 { color: #08f; }
+    #phase { font-size: 24px; font-weight: bold; padding: 10px; background: #000; display: inline-block; margin: 10px 0; border: 1px solid #0f0; }
+  </style>
+</head>
+<body>
+  <h1>🎛️ Möbius Audio Debug Console</h1>
+  <p>This page tests the AudioWorklet processing pipeline directly, bypassing React/UI layer.</p>
+
+  <div>
+    <h2>Controls</h2>
+    <button id="btn-init">1. Init AudioContext + Worklet</button>
+    <button id="btn-record" disabled>2. RECORD (start)</button>
+    <button id="btn-stop" disabled>3. STOP (commit loop)</button>
+    <button id="btn-overdub" disabled>4. OVERDUB</button>
+    <button id="btn-pause" disabled>5. PAUSE</button>
+    <button id="btn-resume" disabled>6. RESUME</button>
+    <button id="btn-clear" disabled>7. CLEAR</button>
+    <button id="btn-check-playhead" disabled>8. Log Playhead</button>
+  </div>
+
+  <div>
+    <h2>Phase: <span id="phase">NOT STARTED</span></h2>
+    <div>Playhead: <span id="playhead">0</span> / <span id="loop-frames">0</span> frames</div>
+    <div>Input Level: <span id="input-level">0</span> | Output Level: <span id="output-level">0</span></div>
+  </div>
+
+  <div id="log"></div>
+
+  <script>
+    const logEl = document.getElementById('log');
+    const phaseEl = document.getElementById('phase');
+    const playheadEl = document.getElementById('playhead');
+    const loopFramesEl = document.getElementById('loop-frames');
+    const inputLevelEl = document.getElementById('input-level');
+    const outputLevelEl = document.getElementById('output-level');
+
+    let ctx = null;
+    let workletNode = null;
+    let playhead = 0;
+    let commandCounter = 0;
+
+    function log(msg, type = 'ok') {
+      const ts = new Date().toISOString().substr(11, 12);
+      const line = document.createElement('div');
+      line.className = type;
+      line.textContent = `[${ts}] ${msg}`;
+      logEl.appendChild(line);
+      logEl.scrollTop = logEl.scrollHeight;
+      console.log(`[DEBUG] ${msg}`);
+    }
+
+    function cmdId() {
+      return `cmd-${++commandCounter}-${Date.now()}`;
+    }
+
+    document.getElementById('btn-init').onclick = async () => {
+      try {
+        log('Creating AudioContext at 48kHz...', 'info');
+        ctx = new AudioContext({ latencyHint: 'interactive', sampleRate: 48000 });
+
+        log('Loading AudioWorklet module from /src/audio/worklet/LoopProcessor.ts...', 'info');
+        await ctx.audioWorklet.addModule('/src/audio/worklet/LoopProcessor.ts');
+        log('✓ AudioWorklet module loaded', 'ok');
+
+        workletNode = new AudioWorkletNode(ctx, 'LoopProcessor', {
+          numberOfInputs: 1,
+          numberOfOutputs: 1,
+          outputChannelCount: [2]
+        });
+
+        workletNode.port.onmessage = (e) => {
+          const data = e.data;
+          if (data.type === 'ready') {
+            log(`✓ Worklet reported READY (sampleRate: ${data.sampleRate})`, 'ok');
+            // Enable buttons
+            ['btn-record','btn-stop','btn-overdub','btn-pause','btn-resume','btn-clear','btn-check-playhead']
+              .forEach(id => document.getElementById(id).disabled = false);
+          } else if (data.type === 'commit') {
+            log(`✓ COMMIT received: kind=${data.event.kind} targetFrame=${data.event.targetFrame} actualFrame=${data.event.actualFrame}`, 'ok');
+          } else if (data.type === 'telemetry') {
+            const t = data.data;
+            playheadEl.textContent = t.playheadFrame || 0;
+            loopFramesEl.textContent = t.loopFrames || 0;
+            inputLevelEl.textContent = (t.inputRms || 0).toFixed(4);
+            outputLevelEl.textContent = (t.outputRms || 0).toFixed(4);
+            phaseEl.textContent = t.phase || '?';
+          } else if (data.type === 'fault') {
+            log(`⚠ FAULT: ${data.fault.code} - ${data.fault.message}`, 'err');
+          } else {
+            log(`MSG: ${JSON.stringify(data)}`, 'info');
+          }
+        };
+
+        // Create a synthetic oscillator as mic substitute
+        const oscillator = ctx.createOscillator();
+        oscillator.frequency.value = 440;
+        oscillator.connect(workletNode);
+        workletNode.connect(ctx.destination);
+        oscillator.start();
+
+        if (ctx.state === 'suspended') await ctx.resume();
+
+        // Send init (sampleRate update)
+        workletNode.port.postMessage({ type: 'init', config: { sampleRate: ctx.sampleRate, bufferSize: 128 } });
+
+        log(`✓ Audio graph connected. Context state: ${ctx.state}`, 'ok');
+        log('ℹ Processor should now be running and emitting telemetry every ~32ms', 'info');
+      } catch (err) {
+        log(`✗ INIT FAILED: ${err.message}`, 'err');
+        console.error(err);
+      }
+    };
+
+    document.getElementById('btn-record').onclick = () => {
+      const id = cmdId();
+      const targetFrame = playhead + 256;
+      log(`→ Scheduling RECORD_START (cmdId=${id}, targetFrame=${targetFrame})`, 'info');
+      workletNode.port.postMessage({
+        type: 'schedule',
+        commandId: id,
+        effect: { kind: 'RECORD_START', commandId: id, targetFrame, layerId: `layer-${id}` }
+      });
+    };
+
+    document.getElementById('btn-stop').onclick = () => {
+      const id = cmdId();
+      const targetFrame = playhead + 256;
+      log(`→ Scheduling RECORD_STOP (cmdId=${id}, targetFrame=${targetFrame})`, 'info');
+      workletNode.port.postMessage({
+        type: 'schedule',
+        commandId: id,
+        effect: { kind: 'RECORD_STOP', commandId: id, targetFrame }
+      });
+    };
+
+    document.getElementById('btn-overdub').onclick = () => {
+      const id = cmdId();
+      const targetFrame = playhead + 256;
+      log(`→ Scheduling OVERDUB_START (cmdId=${id}, targetFrame=${targetFrame})`, 'info');
+      workletNode.port.postMessage({
+        type: 'schedule',
+        commandId: id,
+        effect: { kind: 'OVERDUB_START', commandId: id, targetFrame, layerId: `layer-${id}` }
+      });
+    };
+
+    document.getElementById('btn-pause').onclick = () => {
+      const id = cmdId();
+      log(`→ Scheduling PAUSE (cmdId=${id})`, 'info');
+      workletNode.port.postMessage({
+        type: 'schedule',
+        commandId: id,
+        effect: { kind: 'PAUSE', commandId: id, targetFrame: playhead + 256 }
+      });
+    };
+
+    document.getElementById('btn-resume').onclick = () => {
+      const id = cmdId();
+      log(`→ Scheduling RESUME (cmdId=${id})`, 'info');
+      workletNode.port.postMessage({
+        type: 'schedule',
+        commandId: id,
+        effect: { kind: 'RESUME', commandId: id, targetFrame: playhead + 256 }
+      });
+    };
+
+    document.getElementById('btn-clear').onclick = () => {
+      const id = cmdId();
+      log(`→ Scheduling CLEAR (cmdId=${id})`, 'info');
+      workletNode.port.postMessage({
+        type: 'schedule',
+        commandId: id,
+        effect: { kind: 'CLEAR', commandId: id, targetFrame: 0 }
+      });
+    };
+
+    document.getElementById('btn-check-playhead').onclick = () => {
+      log(`Playhead display: ${playheadEl.textContent} / ${loopFramesEl.textContent}`, 'info');
+    };
+
+    log('Ready. Click "1. Init AudioContext + Worklet" to begin.', 'info');
+  </script>
+</body>
+</html>

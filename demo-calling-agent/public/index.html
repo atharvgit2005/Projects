@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Habib's Salon Pune | Shreya AI Receptionist</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0A0A0A;
+      color: #FFFFFF;
+    }
+    .font-serif-title {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    .obsidian-card {
+      background-color: #121212;
+      border: 1px solid #262626;
+      border-radius: 4px;
+    }
+    .obsidian-card:hover {
+      border-color: #404040;
+    }
+    .thin-divider {
+      border-bottom: 1px solid #1A1A1A;
+    }
+    .transcript-scroll::-webkit-scrollbar {
+      width: 3px;
+    }
+    .transcript-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .transcript-scroll::-webkit-scrollbar-thumb {
+      background: #333333;
+      border-radius: 2px;
+    }
+    .waveform-bar {
+      animation: wave 1.2s ease-in-out infinite;
+    }
+    @keyframes wave {
+      0%, 100% { height: 12%; opacity: 0.3; }
+      50% { height: 90%; opacity: 1; }
+    }
+  </style>
+</head>
+<body class="flex h-screen antialiased overflow-hidden selection:bg-white selection:text-black bg-[#0A0A0A] text-white">
+  
+  <!-- Left Navigation Sidebar -->
+  <aside class="w-[260px] flex-shrink-0 border-r border-[#1E1E1E] bg-[#0A0A0A] py-8 flex flex-col justify-between px-6 transition-all duration-300">
+    <div class="space-y-10">
+      <!-- Salon Brand Header -->
+      <div class="space-y-1">
+        <span class="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-semibold">EST. 1937</span>
+        <h2 class="font-serif-title text-xl font-medium tracking-tight text-white">Habib's Salon</h2>
+        <p class="text-xs text-zinc-400">Koregaon Park, Pune</p>
+      </div>
+      
+      <!-- Nav Links -->
+      <nav class="flex flex-col gap-1">
+        <a class="flex items-center gap-3 px-3 py-2.5 rounded text-xs font-medium bg-[#171717] text-white border border-[#262626]" href="#">
+          <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+          <span>Live Monitor</span>
+        </a>
+        <a class="flex items-center gap-3 px-3 py-2.5 rounded text-xs font-medium text-zinc-400 hover:text-white hover:bg-[#141414] transition-colors" href="#recent-calls-section">
+          <span class="w-1.5 h-1.5 rounded-full bg-zinc-600"></span>
+          <span>Call Session Logs</span>
+        </a>
+        <a class="flex items-center gap-3 px-3 py-2.5 rounded text-xs font-medium text-zinc-400 hover:text-white hover:bg-[#141414] transition-colors" href="#appointments-table-section">
+          <span class="w-1.5 h-1.5 rounded-full bg-zinc-600"></span>
+          <span>Bookings Register</span>
+        </a>
+        <a class="flex items-center gap-3 px-3 py-2.5 rounded text-xs font-medium text-zinc-400 hover:text-white hover:bg-[#141414] transition-colors" href="#barbers-section">
+          <span class="w-1.5 h-1.5 rounded-full bg-zinc-600"></span>
+          <span>Stylists Directory</span>
+        </a>
+      </nav>
+    </div>
+    
+    <!-- Sidebar Footer Actions -->
+    <div class="space-y-4 pt-6 border-t border-[#1E1E1E]">
+      <button onclick="playVoicePreview()" class="w-full bg-[#18181B] hover:bg-[#27272A] border border-[#27272A] text-white py-2.5 rounded text-xs font-medium transition-all flex items-center justify-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+        <span>Listen Shreya Voice</span>
+      </button>
+      
+      <button onclick="openTestModal()" class="w-full bg-white text-black hover:bg-zinc-200 py-2.5 rounded text-xs font-semibold transition-colors">
+        + Create Booking
+      </button>
+
+      <div class="text-[11px] text-zinc-500 font-mono space-y-0.5 pt-2">
+        <div class="flex justify-between">
+          <span>Agent</span>
+          <span class="text-zinc-300 font-sans">Shreya AI</span>
+        </div>
+        <div class="flex justify-between">
+          <span>Voice Model</span>
+          <span class="text-zinc-300 font-sans">Inworld TTS-2</span>
+        </div>
+        <div class="flex justify-between">
+          <span>STT Engine</span>
+          <span class="text-zinc-300 font-sans">Groq Whisper-v3</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 flex flex-col min-w-0 overflow-y-auto overflow-x-hidden p-8 lg:p-12 space-y-10">
+    
+    <!-- Top Bar Header -->
+    <header class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[#1E1E1E]">
+      <div>
+        <span class="text-[11px] uppercase tracking-[0.25em] text-zinc-500 font-medium">Real-Time Voice Architecture</span>
+        <h1 class="font-serif-title text-4xl font-normal tracking-tight text-white mt-1">Shreya AI Receptionist</h1>
+      </div>
+      
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2 bg-[#121212] border border-[#262626] px-3.5 py-1.5 rounded">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span id="agent-status-text" class="text-xs font-medium text-zinc-300">Shreya AI Online</span>
+        </div>
+        
+        <button onclick="triggerCallToPhone()" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-black font-semibold text-xs rounded transition-colors flex items-center gap-1.5 shadow-sm">
+          <span>📞</span> Call My Phone
+        </button>
+
+        <button id="preview-btn" onclick="playVoicePreview()" class="px-4 py-2 bg-white text-black text-xs font-semibold rounded hover:bg-zinc-200 transition-colors">
+          Play Voice Preview
+        </button>
+        
+        <button onclick="fetchDashboardData()" class="px-4 py-2 bg-[#141414] border border-[#262626] text-zinc-300 text-xs font-medium rounded hover:bg-[#1F1F1F] transition-colors">
+          Refresh
+        </button>
+      </div>
+    </header>
+
+    <div class="space-y-8 max-w-7xl">
+      
+      <!-- Primary Live Call Monitor Card -->
+      <section class="obsidian-card p-8 space-y-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#1E1E1E] pb-6">
+          <div>
+            <h2 class="font-serif-title text-2xl font-normal text-white">Live Call Monitor</h2>
+            <p class="text-xs text-zinc-400 mt-1">Telephony Stream: Twilio G.711 µ-law 8kHz ↔ Inworld TTS Shreya (16kHz LINEAR16)</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono text-zinc-500">Session Status</span>
+            <span class="text-xs px-3 py-1 rounded bg-[#1A1A1A] border border-[#262626] text-white font-mono">STANDBY / CONNECTED</span>
+          </div>
+        </div>
+
+        <!-- Audio Oscillating Waveform -->
+        <div class="bg-[#0A0A0A] border border-[#1E1E1E] rounded p-4 flex flex-col items-center justify-center gap-2">
+          <div id="waveform-container" class="h-16 w-full flex items-center justify-center gap-[3px] opacity-90">
+          </div>
+          <span class="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-mono">Live Voice Output Activity</span>
+        </div>
+
+        <!-- Grid Layout: Caller Info, Live Transcript, Key Extractions -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Caller Metadata -->
+          <div class="lg:col-span-3 bg-[#0A0A0A] border border-[#1E1E1E] rounded p-6 space-y-6">
+            <span class="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-semibold block border-b border-[#1A1A1A] pb-3">Caller Identity</span>
+            <div class="space-y-4 text-xs">
+              <div>
+                <p class="text-zinc-500 mb-0.5">Customer Name</p>
+                <p id="caller-name" class="text-sm font-medium text-white">Rahul Sharma</p>
+              </div>
+              <div>
+                <p class="text-zinc-500 mb-0.5">Phone Number</p>
+                <p id="caller-phone" class="text-sm font-mono text-zinc-300">+91 98765 43210</p>
+              </div>
+              <div>
+                <p class="text-zinc-500 mb-0.5">Origin</p>
+                <p id="caller-location" class="text-sm text-zinc-300">Koregaon Park, Pune</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Transcript Area -->
+          <div class="lg:col-span-6 h-72 flex flex-col bg-[#0A0A0A] border border-[#1E1E1E] rounded p-6 relative">
+            <span class="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-semibold mb-4 block">Bilingual Audio Transcript</span>
+            <div id="transcript-box" class="flex-1 overflow-y-auto transcript-scroll space-y-5 text-xs leading-relaxed pr-2">
+              <div class="space-y-1">
+                <span class="text-[10px] font-mono text-zinc-500 block uppercase">SHREYA AI</span>
+                <p class="text-white font-serif-title text-sm italic">"Namaste! Welcome to Habib's Salon Pune. Main Shreya... aapki kya madad kar sakti hoon?"</p>
+              </div>
+              <div class="space-y-1">
+                <span class="text-[10px] font-mono text-zinc-400 block uppercase">CUSTOMER</span>
+                <p class="text-zinc-300">"Mujhe kal Vikram ke saath haircut ke liye appointment book karni hai."</p>
+              </div>
+              <div class="space-y-1">
+                <span class="text-[10px] font-mono text-zinc-500 block uppercase">SHREYA AI</span>
+                <p class="text-white font-serif-title text-sm italic">"Achha sir... ek second... Vikram Master Stylist hain. Kal shaam 5:00 baje slot available hai. Kya main confirm kar doon?"</p>
+              </div>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[#0A0A0A] to-transparent pointer-events-none"></div>
+          </div>
+
+          <!-- Structured Key Extractions -->
+          <div class="lg:col-span-3 bg-[#0A0A0A] border border-[#1E1E1E] rounded p-6 space-y-6">
+            <span class="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-semibold block border-b border-[#1A1A1A] pb-3">Intent Extraction</span>
+            <div class="space-y-3.5 text-xs">
+              <div class="flex justify-between items-center">
+                <span class="text-zinc-500">Service</span>
+                <span id="extracted-intent" class="font-medium text-white">Haircut (Master)</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-zinc-500">Stylist</span>
+                <span class="font-medium text-white">Vikram</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-zinc-500">Date</span>
+                <span id="extracted-date" class="font-mono text-zinc-300">Tomorrow</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-zinc-500">Time Slot</span>
+                <span id="extracted-time" class="font-mono text-zinc-300">5:00 PM</span>
+              </div>
+              <div class="pt-3 border-t border-[#1A1A1A] flex justify-between items-center">
+                <span class="text-zinc-500">Booking Status</span>
+                <span class="text-[11px] font-mono text-emerald-400">CONFIRMED</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Bookings Register Table & Stylists Directory -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Confirmed Appointments Table -->
+        <section id="appointments-table-section" class="lg:col-span-8 obsidian-card p-8 space-y-6">
+          <div class="flex justify-between items-center border-b border-[#1E1E1E] pb-4">
+            <div>
+              <h2 class="font-serif-title text-xl font-normal text-white">Bookings Register</h2>
+              <p class="text-xs text-zinc-400 mt-0.5">Synced with Supabase PostgreSQL & n8n Workflows</p>
+            </div>
+            <button onclick="fetchAppointments()" class="text-xs text-zinc-400 hover:text-white font-mono">
+              [Refresh Table]
+            </button>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead>
+                <tr class="border-b border-[#262626] text-[10px] uppercase tracking-[0.15em] text-zinc-500">
+                  <th class="py-3 px-3">Customer</th>
+                  <th class="py-3 px-3">Service</th>
+                  <th class="py-3 px-3">Date & Time</th>
+                  <th class="py-3 px-3">Status</th>
+                  <th class="py-3 px-3">Notes</th>
+                </tr>
+              </thead>
+              <tbody id="appointments-tbody" class="divide-y divide-[#1A1A1A]">
+                <tr>
+                  <td colspan="5" class="py-8 text-center text-zinc-500 italic font-serif-title">Loading bookings register...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Stylists Directory Card -->
+        <section id="barbers-section" class="lg:col-span-4 obsidian-card p-8 space-y-6">
+          <div class="border-b border-[#1E1E1E] pb-4">
+            <h2 class="font-serif-title text-xl font-normal text-white">Stylists Roster</h2>
+            <p class="text-xs text-zinc-400 mt-0.5">Habib's Salon Pune Team</p>
+          </div>
+
+          <div class="space-y-4 text-xs">
+            <div class="p-3.5 bg-[#0A0A0A] border border-[#1E1E1E] rounded flex items-center justify-between">
+              <div>
+                <p class="font-medium text-white text-sm">Vikram</p>
+                <p class="text-[11px] text-zinc-400">Master Stylist (10 yrs exp)</p>
+              </div>
+              <span class="w-2 h-2 rounded-full bg-emerald-400" title="Available Today"></span>
+            </div>
+
+            <div class="p-3.5 bg-[#0A0A0A] border border-[#1E1E1E] rounded flex items-center justify-between">
+              <div>
+                <p class="font-medium text-white text-sm">Rahul</p>
+                <p class="text-[11px] text-zinc-400">Senior Stylist (7 yrs exp)</p>
+              </div>
+              <span class="w-2 h-2 rounded-full bg-emerald-400" title="Available Today"></span>
+            </div>
+
+            <div class="p-3.5 bg-[#0A0A0A] border border-[#1E1E1E] rounded flex items-center justify-between">
+              <div>
+                <p class="font-medium text-white text-sm">Ananya</p>
+                <p class="text-[11px] text-zinc-400">Beauty Specialist (6 yrs exp)</p>
+              </div>
+              <span class="w-2 h-2 rounded-full bg-emerald-400" title="Available Today"></span>
+            </div>
+
+            <div class="p-3.5 bg-[#0A0A0A] border border-[#1E1E1E] rounded flex items-center justify-between">
+              <div>
+                <p class="font-medium text-white text-sm">Amit</p>
+                <p class="text-[11px] text-zinc-400">Junior Stylist (4 yrs exp)</p>
+              </div>
+              <span class="w-2 h-2 rounded-full bg-emerald-400" title="Available Today"></span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Create Test Appointment Modal -->
+  <div id="test-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+    <div class="obsidian-card max-w-md w-full p-8 space-y-6 border border-[#333333] shadow-2xl">
+      <div class="flex justify-between items-center border-b border-[#262626] pb-4">
+        <h3 class="font-serif-title text-xl text-white">Create Test Booking</h3>
+        <button onclick="closeTestModal()" class="text-zinc-400 hover:text-white">✕</button>
+      </div>
+      <form onsubmit="submitTestBooking(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block text-zinc-400 mb-1">Customer Name</label>
+          <input type="text" id="m-name" required value="Rahul Sharma" class="w-full bg-[#0A0A0A] border border-[#262626] rounded px-3 py-2 text-white focus:outline-none focus:border-white"/>
+        </div>
+        <div>
+          <label class="block text-zinc-400 mb-1">Phone Number</label>
+          <input type="text" id="m-phone" required value="+919876543210" class="w-full bg-[#0A0A0A] border border-[#262626] rounded px-3 py-2 text-white focus:outline-none focus:border-white"/>
+        </div>
+        <div>
+          <label class="block text-zinc-400 mb-1">Service</label>
+          <select id="m-service" class="w-full bg-[#0A0A0A] border border-[#262626] rounded px-3 py-2 text-white focus:outline-none focus:border-white">
+            <option value="Haircut">Haircut (₹500)</option>
+            <option value="Master Haircut (Vikram)">Master Haircut - Vikram (₹800)</option>
+            <option value="Hair Spa">Hair Spa (₹1200)</option>
+            <option value="Hair Colour">Hair Colour (₹2500)</option>
+            <option value="Keratin">Keratin (₹4500)</option>
+            <option value="Facial">Facial (₹1500)</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-zinc-400 mb-1">Date</label>
+            <input type="date" id="m-date" required class="w-full bg-[#0A0A0A] border border-[#262626] rounded px-3 py-2 text-white focus:outline-none focus:border-white"/>
+          </div>
+          <div>
+            <label class="block text-zinc-400 mb-1">Time</label>
+            <input type="time" id="m-time" required value="17:00" class="w-full bg-[#0A0A0A] border border-[#262626] rounded px-3 py-2 text-white focus:outline-none focus:border-white"/>
+          </div>
+        </div>
+        <button type="submit" class="w-full bg-white text-black font-semibold py-3 rounded hover:bg-zinc-200 transition-colors mt-2">
+          Confirm Booking
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('m-date').value = new Date().toISOString().split('T')[0];
+
+    const waveformBox = document.getElementById('waveform-container');
+    let waveformHtml = '';
+    for(let i = 0; i < 64; i++) {
+      let delay = (Math.random() * 1.2).toFixed(2);
+      waveformHtml += `<div class="waveform-bar w-1 bg-white rounded-full opacity-80" style="animation-delay: ${delay}s"></div>`;
+    }
+    waveformBox.innerHTML = waveformHtml;
+
+    let currentAudio = null;
+
+    async function playVoicePreview(customText) {
+      const text = customText || "Namaste! Welcome to Habib's Salon Pune. Main Shreya... aapki kya madad kar sakti hoon?";
+      const btn = document.getElementById('preview-btn');
+      if (btn) btn.innerText = "Generating Audio...";
+
+      try {
+        if (currentAudio) {
+          currentAudio.pause();
+          currentAudio = null;
+        }
+
+        const response = await fetch('/api/voice-preview', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text })
+        });
+
+        if (!response.ok) {
+          throw new Error('Voice preview synthesis failed');
+        }
+
+        const blob = await response.blob();
+        const audioUrl = URL.createObjectURL(blob);
+        currentAudio = new Audio(audioUrl);
+        currentAudio.play();
+
+        if (btn) btn.innerText = "Playing Shreya Voice...";
+        currentAudio.onended = () => {
+          if (btn) btn.innerText = "Play Voice Preview";
+        };
+      } catch (err) {
+        alert('Could not synthesize voice preview: ' + err.message);
+        if (btn) btn.innerText = "Play Voice Preview";
+      }
+    }
+
+    async function triggerCallToPhone() {
+      const targetPhone = prompt("Enter your phone number (with country code):", "+919098344807");
+      if (!targetPhone) return;
+
+      try {
+        const res = await fetch('/api/make-call', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ phone: targetPhone })
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert('📞 Outbound call triggered! Your phone (' + targetPhone + ') is ringing now.');
+        } else {
+          alert('Call error: ' + (data.message || data.error));
+        }
+      } catch (err) {
+        alert('Failed to trigger call: ' + err.message);
+      }
+    }
+
+    async function fetchDashboardData() {
+      try {
+        const hRes = await fetch('/health');
+        const hData = await hRes.json();
+        document.getElementById('agent-status-text').innerText = hData.status === 'UP' ? 'Shreya AI Online' : 'Offline';
+
+        await fetchAppointments();
+      } catch (err) {
+        console.error('Error fetching system status:', err);
+      }
+    }
+
+    async function fetchAppointments() {
+      try {
+        const res = await fetch('/appointments');
+        const data = await res.json();
+        const appointments = data.appointments || [];
+
+        const tbody = document.getElementById('appointments-tbody');
+
+        if (appointments.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-zinc-500 italic font-serif-title">No confirmed bookings found in register. Click "+ Create Booking" to add one.</td></tr>`;
+          return;
+        }
+
+        tbody.innerHTML = appointments.map(apt => `
+          <tr class="hover:bg-[#171717] transition-colors">
+            <td class="py-3 px-3 font-medium text-white">
+              <div>${apt.customer_name}</div>
+              <div class="text-[11px] text-zinc-400 font-mono">${apt.phone}</div>
+            </td>
+            <td class="py-3 px-3 text-zinc-300">${apt.service}</td>
+            <td class="py-3 px-3 font-mono text-zinc-400">${apt.date} ${apt.time}</td>
+            <td class="py-3 px-3">
+              <span class="text-[10px] font-mono text-emerald-400 border border-emerald-900/50 bg-emerald-950/30 px-2 py-0.5 rounded">
+                ${apt.status.toUpperCase()}
+              </span>
+            </td>
+            <td class="py-3 px-3 text-zinc-400">${apt.notes || 'Booked via Shreya AI'}</td>
+          </tr>
+        `).join('');
+
+      } catch (err) {
+        console.error('Error fetching appointments:', err);
+      }
+    }
+
+    function openTestModal() {
+      document.getElementById('test-modal').classList.remove('hidden');
+      document.getElementById('test-modal').classList.add('flex');
+    }
+
+    function closeTestModal() {
+      document.getElementById('test-modal').classList.add('hidden');
+      document.getElementById('test-modal').classList.remove('flex');
+    }
+
+    async function submitTestBooking(e) {
+      e.preventDefault();
+      const payload = {
+        customer_name: document.getElementById('m-name').value,
+        phone: document.getElementById('m-phone').value,
+        service: document.getElementById('m-service').value,
+        date: document.getElementById('m-date').value,
+        time: document.getElementById('m-time').value,
+        notes: 'Created via Obsidian Reserve Dashboard'
+      };
+
+      try {
+        const res = await fetch('/test-booking', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const result = await res.json();
+        closeTestModal();
+        fetchAppointments();
+      } catch (err) {
+        alert('Error: ' + err.message);
+      }
+    }
+
+    fetchDashboardData();
+    setInterval(fetchDashboardData, 8000);
+  </script>
+</body>
+</html>

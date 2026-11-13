@@ -18,3 +18,8 @@ Thumbs.db
 *.env
 .env.*
 !.env.example
+
+# Session & credential dumps
+*.sw_col.json
+*.postman_collection.json
+*session*
